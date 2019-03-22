@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 import 'login.dart';
-
+import 'search.dart';
 import 'model/product.dart';
 
 const double _kFlingVelocity = 3.0;
@@ -89,7 +89,7 @@ class _BackdropState extends State<Backdrop>
         PositionedTransition(
           rect: layerAnimation,
           child: _FrontLayer(
-            
+
             onTap: _toggleBackdropLayerVisibility,
             child: widget.frontLayer,
           ),
@@ -105,25 +105,24 @@ class _BackdropState extends State<Backdrop>
       brightness: Brightness.light,
       elevation: 0.0,
       titleSpacing: 0.0,
-   
+
       leading: IconButton(
         icon: Icon(Icons.menu),
         onPressed: _toggleBackdropLayerVisibility,
       ),
       title: Text('TvenD'),
       actions: <Widget>[
-        
+
         IconButton(
           icon: Icon(
             Icons.search,
-            semanticLabel: 'login',
+            semanticLabel: 'search',
           ),
           onPressed: () {
-        
-          Navigator.push(
-              context,
-              MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
-            );
+            showSearch(
+          context: context,
+          delegate: CustomSearchDelegate(),
+        );
           },
         ),
         IconButton(
